@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-
+//teste de alteração
 	public Connection getConnection() throws SQLException {
 		System.out.println("conectando ...");
 
