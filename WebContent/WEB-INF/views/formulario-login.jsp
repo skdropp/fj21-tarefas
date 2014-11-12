@@ -41,10 +41,10 @@
 				        </div>
 				        <div class="form-group">
 				          <div class="col-md-12">
-				            <label for="password" class="control-label" name="senha">Password</label>
+				            <label for="password" class="control-label">Password</label>
 				            <div class="templatemo-input-icon-container">
 				            	<i class="fa fa-lock"></i>
-				            	<input type="password" class="form-control" id="password" placeholder="">
+				            	<input type="password" name="senha" class="form-control" id="password" placeholder="">
 				            </div>
 				          </div>
 				        </div>
