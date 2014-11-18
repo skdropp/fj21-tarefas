@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.caelum.tarefas.modelo.Campeonato;
 import br.com.caelum.tarefas.modelo.Confrontos;
+import br.com.caelum.tarefas.modelo.Jogador;
 
 @Repository
 public class JpaConfrontosDao implements ConfrontosDao {
@@ -22,22 +23,16 @@ public class JpaConfrontosDao implements ConfrontosDao {
 	public Confrontos buscaPorId(Long id) {
 		return manager.find(Confrontos.class, id);
 	}
+	
+
 	@Override
-	public List<Confrontos> listaPeloIdUsuario(Long idUsuario) {
+	public List<Confrontos> listaPeloId(Long id) {
 		Query query = this.manager
-				.createQuery("select confrontos FROM Confrontos confronto WHERE confronto.idCampeonato = ?");
-		query.setParameter(1, idUsuario);
+				.createQuery("select confrontos FROM Confrontos confrontos WHERE confrontos.idCampeonato = ?");
+		query.setParameter(1, id);
 		return query.getResultList();
 	}
-
-	@Override
-	public List<Confrontos> lista() {
-
-		return manager.createQuery(
-				"select campeonato from Campeonato campeonato ")
-				.getResultList();
-
-	}
+	
 
 	@Override
 	public void adiciona(Confrontos confontros) {

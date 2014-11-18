@@ -10,10 +10,8 @@ public interface ConfrontosDao {
 
 	Confrontos buscaPorId(Long id);
 
-	List<Confrontos> listaPeloIdUsuario(Long idUsuario );
+	List<Confrontos> listaPeloId(Long id );
 	
-	List<Confrontos> lista();
-
 	void adiciona(Confrontos confrontos);
 
 	void altera(Confrontos confrontos);
