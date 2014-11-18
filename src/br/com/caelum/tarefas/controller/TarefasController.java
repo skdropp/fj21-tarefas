@@ -72,8 +72,8 @@ public class TarefasController {
 		Long id = campeonatoSessao.getId();
 
 		
-		model.addAttribute("jogadores", dao.listaPeloId(id));
-		return "tarefa/modo-matamata";
+		session.setAttribute("jogadores", dao.listaPeloId(id));
+		return "redirect:listaConfrontos";
 
 	}
 

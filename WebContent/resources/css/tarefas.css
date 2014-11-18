@@ -56,7 +56,7 @@ span[id*=errors] {
 
 table {
 	border-collapse: collapse;
-	text-align: left;
+	text-align: center;
 }
 
 table td {

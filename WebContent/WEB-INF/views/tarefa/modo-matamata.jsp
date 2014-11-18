@@ -53,5 +53,34 @@
      <td><a href="removeJogador?id=${jogadores.id}">Remover</a></td>
      </c:forEach>
   </table>
+  <td><a href="geraConfrontos"> Gerar Confrontos </a></td>
+  
+  <table>
+  <tr>
+    <th>Id</th>
+     <th>IdCampeonato </th>
+    <th>Id Jogador Casa: </th>
+    <th>Nome:</th>
+     <th>Gols Casa:</th>
+      <th>Id Jogador Fora:</th>
+       <th>Nome:</th>
+        <th>Gols Fora:</th>
+         
+  </tr>
+  <c:forEach items="${confrontos}" var="confrontos">
+    <tr>
+      <td>${confrontos.id}</td>
+      <td>${confrontos.idCampeonato}</td>
+      <td>${confrontos.idJogadorCasa}</td>
+      <td>${confrontos.jogadorCasa}</td>
+      <td>${confrontos.golsCasa}</td>
+      <td>${confrontos.idJogadorFora}</td>
+      <td>${confrontos.jogadorFora}</td>
+      <td>${confrontos.golsFora}</td>
+      </c:forEach>
+  </table>
+  
+  
+  
 </body>
 </html>

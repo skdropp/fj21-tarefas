@@ -9,7 +9,7 @@
 <head>
 <link type="text/css" href="resources/css/tarefas.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Tela Inicial</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/cabecalho.jsp" />
