@@ -24,20 +24,54 @@ public class ConfrontoController {
 	@Autowired
 	ConfrontosDao dao;
 	
+	@RequestMapping("confereSeTemConfrontosDoCampeonato")
+	public String confereTemConfrontosDoCampeonato(HttpSession session) {
+
+		// carrega o campeonato da sessao
+				Campeonato campeonatoSessao = (Campeonato) session
+						.getAttribute("campeonato");
+				Long id = campeonatoSessao.getId();
+				
+				
+				if(dao.confereSeTemConfrontos(id) == null){
+					
+				return 	"redirect:geraConfrontos";
+				}else {
+					
+					return "tarefa/aviso";
+				}
+				
+				
+
+	}
+	@RequestMapping("removeConfrontos")
+	public String removeConfrontos(HttpSession session) {
+		
+		// apaga a lista de confrontos da sessao
+		session.removeAttribute("confrontos");
+		
+		// carrega o campeonato da sessao
+		Campeonato campeonatoSessao = (Campeonato) session
+				.getAttribute("campeonato");
+		Long id = campeonatoSessao.getId();
+		
+		dao.remove(id);
+		return "redirect:geraConfrontos";
+
+	}
+
 	@RequestMapping("listaConfrontos")
-	public String listaJogadores(HttpSession session,Model model) {
+	public String listaJogadores(HttpSession session, Model model) {
 
 		// carrega o campeonato da sessao
 		Campeonato campeonatoSessao = (Campeonato) session
 				.getAttribute("campeonato");
 		Long id = campeonatoSessao.getId();
 
-		
 		session.setAttribute("confrontos", dao.listaPeloId(id));
 		return "tarefa/modo-matamata";
 
 	}
-	
 
 	@RequestMapping("geraConfrontos")
 	public String listaConfrontos(HttpSession session) {
@@ -48,7 +82,7 @@ public class ConfrontoController {
 				.getAttribute("jogadores");
 
 		for (int a = 0; a < jogadoresDaSessao.size(); a++) {
-			Collections.swap(jogadoresDaSessao, 0, a);		
+			Collections.swap(jogadoresDaSessao, 0, a);
 			for (int i = 1; i < jogadoresDaSessao.size(); i++) {
 
 				Confrontos confrontos = new Confrontos();
@@ -59,12 +93,13 @@ public class ConfrontoController {
 				confrontos.setIdJogadorFora(jogadoresDaSessao.get(i).getId());
 				confrontos.setJogadorFora(jogadoresDaSessao.get(i).getNome());
 				dao.adiciona(confrontos);
-				
-			}
-			
-		}
-			return "redirect:listaJogadores";
 
-		
+			}
+
+		}
+		return "redirect:listaJogadores";
+
 	}
+
+	
 }

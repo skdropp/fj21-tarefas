@@ -35,18 +35,7 @@ public class CampeonatoController {
 
 	}
 
-	/*
-	 * @RequestMapping("listaCampeonatos") public String listaCampeonatos(Model
-	 * model) {
-	 * 
-	 * 
-	 * model.addAttribute("campeonatos", dao.lista()); return
-	 * "campeonato/tela-inicial";
-	 * 
-	 * }
-	 */
 	
-	// //////////////////////////////////////////////
 	@RequestMapping("carregarCampeonato")
 	public String carregarCampeonato(Campeonato campeonato, HttpSession session) {
 

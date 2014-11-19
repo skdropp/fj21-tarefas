@@ -7,6 +7,8 @@ import br.com.caelum.tarefas.modelo.Confrontos;
 import br.com.caelum.tarefas.modelo.Jogador;
 
 public interface ConfrontosDao {
+	
+	Confrontos confereSeTemConfrontos(Long id);
 
 	Confrontos buscaPorId(Long id);
 
@@ -16,7 +18,7 @@ public interface ConfrontosDao {
 
 	void altera(Confrontos confrontos);
 
-	void remove(Confrontos confrontos);
+	void remove(Long id);
 
 	void finaliza(Long id);
 }

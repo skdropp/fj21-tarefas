@@ -3,6 +3,7 @@ package br.com.caelum.tarefas.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.IdClass;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -46,16 +47,29 @@ public class JpaConfrontosDao implements ConfrontosDao {
 	}
 
 	@Override
-	public void remove(Confrontos confontros) {
-		Confrontos confrontoARemover = buscaPorId(confontros.getId());
-		manager.remove(confrontoARemover);
-
+	public void remove(Long id) {
+		// TODO Auto-generated method stub
+		Query query = this.manager
+				.createQuery("delete   FROM Confrontos  confrontos WHERE confrontos.idCampeonato = ?");
+		query.setParameter(1, id);
+		query.executeUpdate();
+	}
+	
+		
+	@Override
+	public Confrontos confereSeTemConfrontos(Long idCampeonato) {
+		// TODO Auto-generated method stub
+		Query query = this.manager.createQuery("select confrontos from Confrontos confrontos where confrotos.idCampeonato = :name");
+        query.setParameter("name", idCampeonato);
+        return (Confrontos) query.getSingleResult();
+		
 	}
 
 	@Override
 	public void finaliza(Long id) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
+	
 }

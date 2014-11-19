@@ -53,8 +53,8 @@
      <td><a href="removeJogador?id=${jogadores.id}">Remover</a></td>
      </c:forEach>
   </table>
-  <td><a href="geraConfrontos"> Gerar Confrontos </a></td>
-  
+  <td><a href="confereSeTemConfrontosDoCampeonato"> Gerar Confrontos </a></td>
+  <td><a href="removeConfrontos"> Remover Confrontos </a></td>
   <table>
   <tr>
     <th>Id</th>
