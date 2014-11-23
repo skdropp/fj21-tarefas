@@ -19,12 +19,10 @@ public class JpaConfrontosDao implements ConfrontosDao {
 	@PersistenceContext
 	EntityManager manager;
 
-	
 	@Override
 	public Confrontos buscaPorId(Long id) {
 		return manager.find(Confrontos.class, id);
 	}
-	
 
 	@Override
 	public List<Confrontos> listaPeloId(Long id) {
@@ -33,7 +31,6 @@ public class JpaConfrontosDao implements ConfrontosDao {
 		query.setParameter(1, id);
 		return query.getResultList();
 	}
-	
 
 	@Override
 	public void adiciona(Confrontos confontros) {
@@ -54,22 +51,11 @@ public class JpaConfrontosDao implements ConfrontosDao {
 		query.setParameter(1, id);
 		query.executeUpdate();
 	}
-	
-		
-	@Override
-	public Confrontos confereSeTemConfrontos(Long idCampeonato) {
-		// TODO Auto-generated method stub
-		Query query = this.manager.createQuery("select confrontos from Confrontos confrontos where confrotos.idCampeonato = :name");
-        query.setParameter("name", idCampeonato);
-        return (Confrontos) query.getSingleResult();
-		
-	}
 
 	@Override
 	public void finaliza(Long id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

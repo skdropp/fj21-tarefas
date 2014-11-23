@@ -8,8 +8,6 @@ import br.com.caelum.tarefas.modelo.Jogador;
 
 public interface ConfrontosDao {
 	
-	Confrontos confereSeTemConfrontos(Long id);
-
 	Confrontos buscaPorId(Long id);
 
 	List<Confrontos> listaPeloId(Long id );

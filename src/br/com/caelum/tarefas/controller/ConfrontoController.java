@@ -23,38 +23,35 @@ public class ConfrontoController {
 
 	@Autowired
 	ConfrontosDao dao;
-	
+
 	@RequestMapping("confereSeTemConfrontosDoCampeonato")
 	public String confereTemConfrontosDoCampeonato(HttpSession session) {
 
 		// carrega o campeonato da sessao
-				Campeonato campeonatoSessao = (Campeonato) session
-						.getAttribute("campeonato");
-				Long id = campeonatoSessao.getId();
-				
-				
-				if(dao.confereSeTemConfrontos(id) == null){
-					
-				return 	"redirect:geraConfrontos";
-				}else {
-					
-					return "tarefa/aviso";
-				}
-				
-				
+		Campeonato campeonatoSessao = (Campeonato) session
+				.getAttribute("campeonato");
+		Long id = campeonatoSessao.getId();
+
+		List<Confrontos> l = dao.listaPeloId(id);
+		if (l.isEmpty() == true)  {
+
+			return "redirect:geraConfrontos";
+		}
+		return "tarefa/aviso";
 
 	}
+
 	@RequestMapping("removeConfrontos")
 	public String removeConfrontos(HttpSession session) {
-		
+
 		// apaga a lista de confrontos da sessao
 		session.removeAttribute("confrontos");
-		
+
 		// carrega o campeonato da sessao
 		Campeonato campeonatoSessao = (Campeonato) session
 				.getAttribute("campeonato");
 		Long id = campeonatoSessao.getId();
-		
+
 		dao.remove(id);
 		return "redirect:geraConfrontos";
 
@@ -101,5 +98,4 @@ public class ConfrontoController {
 
 	}
 
-	
 }
